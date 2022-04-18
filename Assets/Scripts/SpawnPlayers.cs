@@ -15,7 +15,8 @@ public class SpawnPlayers : MonoBehaviour
     private void Start()
     {
         Vector3 randomPosition = new Vector3(Random.Range(minX, maxX),30, Random.Range(minZ, maxZ));
-        PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
+        GameObject myPlayer = (GameObject)PhotonNetwork.Instantiate(this.playerPrefab.name, randomPosition, Quaternion.identity, 0);
+        myPlayer.GetComponentInChildren<Camera>().enabled = true;
     }
 
 
