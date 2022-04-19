@@ -52,10 +52,11 @@ public class NewNewNew : MonoBehaviourPunCallbacks
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log(Physics.CheckSphere(GroundCheck.position, 0.4f, GroundMask));
             if(Physics.CheckSphere(GroundCheck.position, 0.4f, GroundMask))
             {
                 PlayerBody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
-
+                Debug.Log("Ca marche oas");
             }
         }
     }

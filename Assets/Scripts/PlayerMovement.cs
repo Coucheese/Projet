@@ -17,28 +17,39 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     Vector3 velocity;
 
 
+
     // Couche du sol + hauteur min
     public Transform GroundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     bool isGrounded;
 
+    // Ballon
+    public GameObject ball;
+    public float ballDistance;
+    public LayerMask ballMask;
 
 
     void Update()
     {
         if (photonView.IsMine)
         {
+            moves();       
+        }
+        
+        
+    }
+
+
+    public void moves()
+    {
         float x = Input.GetAxis("Horizontal");      // x=1 si on appuie sur d et x=-1 si on appuie sur q
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z; //On crée un vecteur 3D. .right c la ligne rouge et forward la bleue    
         transform.Translate(move * speed * Time.deltaTime);
-           // ProcessInput();
-            Debug.Log("aaaaaaaaaaaaaaa");
-        }
-        
-        
+        // ProcessInput();
+        Debug.Log("aaaaaaaaaaaaaaa");
     }
 
 
