@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IncredibleCube : MonoBehaviour
 {
@@ -14,9 +14,15 @@ public class IncredibleCube : MonoBehaviour
     {
         while (true)
         {
-            transform.RotateAroundLocal(Vector3.up, rotationSpeed);
+            transform.Rotate(Vector3.up * rotationSpeed);
             yield return new WaitForEndOfFrame();
         }
 
+    }
+
+    private void OnTriggerEnter(Collider  other)
+    {
+        Debug.Log("AAAAAAAAAAAAAAAAh je suce");
+        //SceneManager.LoadScene("FPS");
     }
 }
