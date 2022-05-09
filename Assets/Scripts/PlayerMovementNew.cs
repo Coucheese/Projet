@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class NewNewNew : MonoBehaviourPunCallbacks
+public class PlayerMovementNew : MonoBehaviourPunCallbacks
 {
 
     private Vector3 PlayerMovementInput;
@@ -25,15 +25,14 @@ public class NewNewNew : MonoBehaviourPunCallbacks
     private float InitialSpeed;
 
 
-
     void Start()
     {
 
         InitialSpeed = Speed;
         
-        if (!photonView.IsMine && GetComponent<NewNewNew>() != null)
+        if (!photonView.IsMine && GetComponent<PlayerMovementNew>() != null)
         {
-            Destroy(GetComponent<NewNewNew>());
+            Destroy(GetComponent<PlayerMovementNew>());
         }
 
         Cursor.visible = false;
@@ -76,6 +75,7 @@ public class NewNewNew : MonoBehaviourPunCallbacks
         // GetKey = V/F   toute la durée de l'appui
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            Cursor.lockState = CursorLockMode.Locked;
             Debug.Log("Ok");
             Speed = InitialSpeed / 2;
         }
@@ -90,6 +90,7 @@ public class NewNewNew : MonoBehaviourPunCallbacks
     private void MoverPlayerCamera()
     {
         xRot -= PlayerMouseInput.y * Sensitivity;
+        xRot = Mathf.Clamp(xRot, -90, 90);
 
         transform.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);

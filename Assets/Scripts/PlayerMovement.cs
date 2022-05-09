@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 
+
+// N'est plus utilisé
+
 public class PlayerMovement : MonoBehaviourPunCallbacks
 {
 

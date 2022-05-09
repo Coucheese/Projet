@@ -6,6 +6,12 @@ using System.Threading;
 using UnityEngine;
 using Photon.Pun;
 
+
+/*
+               N'EST PLUS UTILISE
+
+*/
+
 public class MouseLook : MonoBehaviourPunCallbacks
 {
     public float mouseSensitivity = 100f;       // Sensibilité de la caméra par rapport à la souris
