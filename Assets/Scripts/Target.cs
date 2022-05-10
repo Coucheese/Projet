@@ -18,6 +18,7 @@ public class Target : MonoBehaviour
 
     void Die()
     {
+        Debug.Log("Je me détruis");
         PhotonNetwork.Destroy(gameObject);
     }
 }

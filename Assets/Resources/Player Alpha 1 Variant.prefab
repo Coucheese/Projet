@@ -336,6 +336,10 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8573021801375489391, guid: cce1d1d7dccf162439669e2c50db885c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8573021802495395265, guid: cce1d1d7dccf162439669e2c50db885c, type: 3}
       propertyPath: m_Name
       value: Player Alpha 1 Variant

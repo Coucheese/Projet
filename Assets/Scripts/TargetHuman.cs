@@ -11,7 +11,7 @@ public class TargetHuman : MonoBehaviour
     public TextMeshProUGUI PV;
 
 
-    public void TakeDammage(float amount)
+    public void TakeHumanDammage(float amount)
     {
         Debug.Log("Ah, I took dammage");
         health -= amount;
@@ -24,6 +24,7 @@ public class TargetHuman : MonoBehaviour
 
     void Die()
     {
+        Debug.Log("                                   Je meurs");
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene("Loading");
     }

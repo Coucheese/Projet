@@ -32,9 +32,18 @@ public class Gun : MonoBehaviour
             Debug.Log(hit.transform.name);
 
             Target target = hit.transform.GetComponent<Target>();
+            TargetHuman targetHuman = hit.transform.GetComponent<TargetHuman>();
+
             if (target != null)
             {
                 target.TakeDammage(dammage);
+                Debug.Log("La cible a pris des dégats");
+            }
+
+            if (targetHuman != null)
+            {
+                targetHuman.TakeHumanDammage(dammage);
+                Debug.Log("L'ennemi a pris des dégats");
             }
         }
     }
