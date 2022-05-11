@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using TMPro;
 
 public class Gun : MonoBehaviour
 {
@@ -8,19 +9,53 @@ public class Gun : MonoBehaviour
 
     public Camera fpsCam;
 
+    public int munition = 13;
+    public int chargeur = 65;
+    public TextMeshProUGUI munitionTxt;
+
     public ParticleSystem shootEffect;
 
+    void Start()
+    {
+        munitionTxt.text = munition.ToString() + " / " + chargeur;
+    }
 
-    // Update is called once per frame
+
     void Update()
     {
-
         if (Input.GetButtonDown("Fire1"))
         {
+            if (munition > 0 && chargeur > 0)
+            {
+                Shoot();
+                munition -= 1;
+                munitionTxt.text = munition.ToString() + " / " + chargeur;
+            }
+        }
 
-            Shoot();
+        if (Input.GetKey(KeyCode.R) && munition != 13 && chargeur > 0)
+        {
+            Reload();
         }
     }
+
+
+    void Reload()
+    {
+        if (chargeur >= 13 - munition)
+        {
+            chargeur -= (13 - munition);
+            munition = 13;
+            munitionTxt.text = munition.ToString() + " / " + chargeur;
+        }
+        else
+        {
+            munition = chargeur;
+            chargeur = 0;            
+            munitionTxt.text = munition.ToString() + " / " + chargeur;
+        }
+    }
+
 
     void Shoot()
     {
