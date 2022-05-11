@@ -13,19 +13,23 @@ public class TargetHuman : MonoBehaviour
 
     public void TakeHumanDammage(float amount)
     {
-        Debug.Log("Ah, I took dammage");
-        health -= amount;
-        if(health <= 0f)
-        {
-            PV.text = health.ToString().Insert(1, " / 50");
+        if(health > 0)
+        { 
+            health -= amount;
+            Debug.Log(this.name + "  : " + health + " / 50");
+            PV.text = health + " / 50";
+
+        }else{
+            
             Die();
         }
+
     }
 
     void Die()
     {
-        Debug.Log("                                   Je meurs");
-        PhotonNetwork.Disconnect();
-        SceneManager.LoadScene("Loading");
+        Debug.Log(this.name + " est mort");
+        //PhotonNetwork.Disconnect();
+        //SceneManager.LoadScene("Loading");
     }
 }

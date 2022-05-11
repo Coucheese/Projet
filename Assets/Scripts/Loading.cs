@@ -7,7 +7,8 @@ public class Loading : MonoBehaviour
 
     public TextMeshProUGUI loading;
 
-    private void Start() => StartCoroutine(Wait());
+
+    private void Start() => StartCoroutine(Wait()); 
 
     IEnumerator Wait()
     {

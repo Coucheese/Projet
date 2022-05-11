@@ -72,13 +72,13 @@ public class Gun : MonoBehaviour
             if (target != null)
             {
                 target.TakeDammage(dammage);
-                Debug.Log("La cible a pris des dégats");
+                //Debug.Log("La cible a pris des dégats");
             }
 
             if (targetHuman != null)
             {
                 targetHuman.TakeHumanDammage(dammage);
-                Debug.Log("L'ennemi a pris des dégats");
+                //Debug.Log("L'ennemi a pris des dégats");
             }
         }
     }

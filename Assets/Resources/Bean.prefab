@@ -138,7 +138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -519, y: -177}
+  m_AnchoredPosition: {x: -519, y: -217}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4040927590233033025
@@ -349,7 +349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 527, y: -177}
+  m_AnchoredPosition: {x: 527, y: -217}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1482580725240958986
@@ -482,7 +482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8573021802495395265, guid: cce1d1d7dccf162439669e2c50db885c, type: 3}
       propertyPath: m_Name
-      value: Player Alpha 1 Variant
+      value: Bean
       objectReference: {fileID: 0}
     - target: {fileID: 8573021802495395279, guid: cce1d1d7dccf162439669e2c50db885c, type: 3}
       propertyPath: m_RootOrder

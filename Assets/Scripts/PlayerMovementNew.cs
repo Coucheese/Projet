@@ -36,6 +36,7 @@ public class PlayerMovementNew : MonoBehaviourPunCallbacks
         }
 
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     void Update()
@@ -76,12 +77,19 @@ public class PlayerMovementNew : MonoBehaviourPunCallbacks
         if (Input.GetKey(KeyCode.LeftShift))
         {
             Cursor.lockState = CursorLockMode.Locked;
-            Debug.Log("Ok");
             Speed = InitialSpeed / 2;
         }
         else
         {
             Speed = InitialSpeed;
+        }
+
+
+
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            this.transform.GetComponent<TargetHuman>().TakeHumanDammage(10);
         }
 
     }
