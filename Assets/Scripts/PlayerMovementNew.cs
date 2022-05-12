@@ -89,7 +89,7 @@ public class PlayerMovementNew : MonoBehaviourPunCallbacks
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            this.transform.GetComponent<TargetHuman>().TakeHumanDammage(10);
+            this.transform.GetComponent<TargetHuman>().TakeDamage(10);
         }
 
     }
@@ -104,5 +104,20 @@ public class PlayerMovementNew : MonoBehaviourPunCallbacks
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
     }
 
-    
+    /*public void TakeDamage(float damage)
+    {
+        Debug.Log("Took Damage: " + damage);
+        photonView.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);
+    }
+
+    [PunRPC]
+    void RPC_TakeDamage(float damage)
+    {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
+        Debug.Log("La vie d'oim jcrois ca marche tema : " + damage);
+    }*/
 }

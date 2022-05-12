@@ -3,6 +3,10 @@ using Photon.Pun;
 
 public class Target : MonoBehaviour
 {
+
+    public PhotonView phothonView;
+    
+
     public float health = 50f;
 
     public void TakeDammage(float amount)
@@ -13,7 +17,8 @@ public class Target : MonoBehaviour
         {
             Die();
         }
-       
+
+       // phothonView.RPC("SyncValues", RpcTarget.AllBuffered, health);
     }
 
     void Die()
@@ -21,4 +26,18 @@ public class Target : MonoBehaviour
         Debug.Log("Je me détruis");
         PhotonNetwork.Destroy(gameObject);
     }
+
+    /*public void TakeDamage(float damage)
+    {
+        phothonView.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);
+    }
+
+    [PunRPC]
+    void RPC_TakeDamage(float damage)
+    {
+        if (!phothonView.IsMine)
+            return;
+
+        Debug.Log("took damage: " + health);
+    }*/
 }

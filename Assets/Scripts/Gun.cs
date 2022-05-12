@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 
 public class Gun : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Gun : MonoBehaviour
     public float range = 100f;
 
     public Camera fpsCam;
+    public PhotonView photonView;
 
     public int munition = 13;
     public int chargeur = 65;
@@ -18,10 +20,24 @@ public class Gun : MonoBehaviour
     void Start()
     {
         munitionTxt.text = munition.ToString() + " / " + chargeur;
+
+        if (!photonView.IsMine && GetComponent<Gun>() != null)
+        {
+            Destroy(GetComponent<Gun>());
+        }
     }
 
 
     void Update()
+    {
+        if (photonView.IsMine)
+        {
+            GetInputs();
+        }
+        
+    }
+
+    void GetInputs()
     {
         if (Input.GetButtonDown("Fire1"))
         {
@@ -37,6 +53,7 @@ public class Gun : MonoBehaviour
         {
             Reload();
         }
+
     }
 
 
@@ -66,6 +83,8 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
+            hit.collider.gameObject.GetComponent<TargetHuman>()?.TakeDamage(10);
+            
             Target target = hit.transform.GetComponent<Target>();
             TargetHuman targetHuman = hit.transform.GetComponent<TargetHuman>();
 
@@ -77,7 +96,7 @@ public class Gun : MonoBehaviour
 
             if (targetHuman != null)
             {
-                targetHuman.TakeHumanDammage(dammage);
+                targetHuman.TakeDamage(7);
                 //Debug.Log("L'ennemi a pris des dégats");
             }
         }
