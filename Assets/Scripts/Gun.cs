@@ -85,6 +85,8 @@ public class Gun : MonoBehaviour
 
             hit.collider.gameObject.GetComponent<TargetHuman>()?.TakeDamage(10);
             
+
+
             Target target = hit.transform.GetComponent<Target>();
             TargetHuman targetHuman = hit.transform.GetComponent<TargetHuman>();
 
@@ -96,7 +98,7 @@ public class Gun : MonoBehaviour
 
             if (targetHuman != null)
             {
-                targetHuman.TakeDamage(7);
+                //targetHuman.TakeDamage(7);
                 //Debug.Log("L'ennemi a pris des dégats");
             }
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Photon.Pun;
+using System;
 
 public class TargetHuman : MonoBehaviour
 {
@@ -36,9 +37,10 @@ public class TargetHuman : MonoBehaviour
             health -= damage;
             Debug.Log(this.name + "  : " + health + " / 50");
             PV.text = health + " / 50";
-
         }
-        else { Die(); }
+
+        if(health ==0){ Die(); }
+
         Debug.Log("Took Damage: " + damage);
         photonView.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);
     }
@@ -60,4 +62,5 @@ public class TargetHuman : MonoBehaviour
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene("Loading");
     }
+
 }

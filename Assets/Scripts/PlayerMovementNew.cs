@@ -27,6 +27,8 @@ public class PlayerMovementNew : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        string id = "Player n°" + PhotonNetwork.LocalPlayer.ActorNumber + PhotonNetwork.LocalPlayer.UserId;
+        this.name = id;
 
         InitialSpeed = Speed;
         
