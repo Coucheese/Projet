@@ -41,6 +41,7 @@ MonoBehaviour:
   - RespawnSpaceship
   - RPC_TakeDamage
   - TakeDamage
+  - RPC_SyncDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

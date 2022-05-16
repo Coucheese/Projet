@@ -35,22 +35,28 @@ public class Target : MonoBehaviour
     public void TakeDamage(float damage)
     {
         phothonView.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);
+        PV.text = health + " / 50";
     }
 
     [PunRPC]
     void RPC_TakeDamage(float damage)
     {
         if (!phothonView.IsMine)
+        {
+            PV.text = health + " / 50";
             return;
+        }
 
-        TakeDammage(damage);
+        
+
+
+        health -= damage;
+        if (health <= 0f)
+        {
+            Die();
+        }
         PV.text = health + " / 50";
-        Debug.Log("took damage: " + health);
+        
+        Debug.Log("Took damage: " + damage + ". I have now: " + health);
     }
-    
-    /*[PunRPC]    
-    public void TakeDamage(int someValue) {
-        health = someValue;
-        Debug.Log("La vie du pacé orange: " + health);
-    }*/
 }

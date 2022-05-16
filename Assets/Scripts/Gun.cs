@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class Gun : MonoBehaviour
 {
-    public float dammage = 10f;
+    public float damage = 10f;
     public float range = 100f;
 
     public Camera fpsCam;
@@ -83,24 +83,25 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            hit.collider.gameObject.GetComponent<Target>()?.TakeDamage(dammage);
-            
+            hit.collider.gameObject.GetComponent<Target>()?.TakeDamage(damage);
+            hit.collider.gameObject.GetComponent<TargetHuman>()?.TakeDamage(damage);
+
 
 
             Target target = hit.transform.GetComponent<Target>();
             TargetHuman targetHuman = hit.transform.GetComponent<TargetHuman>();
 
-            if (target != null)
+            /*if (target != null)
             {
-                //target.TakeDammage(dammage);
-                //Debug.Log("La cible a pris des dégats");
+                target.TakeDammage(dammage);
+                Debug.Log("La cible a pris des dégats");
             }
 
             if (targetHuman != null)
             {
-                //targetHuman.TakeDamage(7);
-                //Debug.Log("L'ennemi a pris des dégats");
-            }
+                targetHuman.TakeDamage(7);
+                Debug.Log("L'ennemi a pris des dégats");
+            }*/
         }
     }
 }

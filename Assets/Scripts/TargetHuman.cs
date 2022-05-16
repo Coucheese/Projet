@@ -30,7 +30,7 @@ public class TargetHuman : MonoBehaviour
     }*/
 
 
-    public void TakeDamage(float damage)
+    public void TakeDammage(float damage)
     {
         if(health > 0)
         {
@@ -45,14 +45,26 @@ public class TargetHuman : MonoBehaviour
         photonView.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);
     }
 
+    public void TakeDamage(float damage)
+    {
+        photonView.RPC("RPC_SyncDamage", RpcTarget.AllBuffered, damage);
+        if (health == 0) { Die(); }
+        PV.text = health + " / 50";
+    }
+
     [PunRPC]
-    void RPC_TakeDamage(float damage)
+    void RPC_SyncDamage(float damage)
     {
         if (!photonView.IsMine)
         {
             return;
         }
 
+        health -= damage;
+        if(health<= 0f)
+        {
+            Die();
+        }
         Debug.Log("La vie d'oim jcrois ca marche tema : " + damage);
     }
 
