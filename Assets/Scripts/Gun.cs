@@ -83,7 +83,7 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            hit.collider.gameObject.GetComponent<TargetHuman>()?.TakeDamage(10);
+            hit.collider.gameObject.GetComponent<Target>()?.TakeDamage(dammage);
             
 
 
@@ -92,7 +92,7 @@ public class Gun : MonoBehaviour
 
             if (target != null)
             {
-                target.TakeDammage(dammage);
+                //target.TakeDammage(dammage);
                 //Debug.Log("La cible a pris des dégats");
             }
 

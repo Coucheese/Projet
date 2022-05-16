@@ -1,11 +1,13 @@
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 public class Target : MonoBehaviour
 {
 
     public PhotonView phothonView;
-    
+    public TextMeshPro PV;
+
 
     public float health = 50f;
 
@@ -13,13 +15,16 @@ public class Target : MonoBehaviour
     {
         health -= amount;
         Debug.Log(health);
-        if(health <= 0f)
+        PV.text = health + " / 50";
+        if (health <= 0f)
         {
             Die();
         }
 
-       // phothonView.RPC("SyncValues", RpcTarget.AllBuffered, health);
+       //phothonView.RPC("TakeDamage", RpcTarget.All, health);
     }
+
+    
 
     void Die()
     {
@@ -27,7 +32,7 @@ public class Target : MonoBehaviour
         PhotonNetwork.Destroy(gameObject);
     }
 
-    /*public void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         phothonView.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);
     }
@@ -38,6 +43,14 @@ public class Target : MonoBehaviour
         if (!phothonView.IsMine)
             return;
 
+        TakeDammage(damage);
+        PV.text = health + " / 50";
         Debug.Log("took damage: " + health);
+    }
+    
+    /*[PunRPC]    
+    public void TakeDamage(int someValue) {
+        health = someValue;
+        Debug.Log("La vie du pacé orange: " + health);
     }*/
 }
