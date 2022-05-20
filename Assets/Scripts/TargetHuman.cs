@@ -8,6 +8,8 @@ using System;
 
 public class TargetHuman : MonoBehaviour
 {
+    public GameObject FloatingTextPrefab;
+
     public float health = 50f;
     public TextMeshProUGUI PV;
 
@@ -29,6 +31,14 @@ public class TargetHuman : MonoBehaviour
 
     }*/
 
+    void ShowFloatingText(Transform shooter, float damageTaken)
+    {
+        Debug.Log("Je viens de instantier un gars qui s'apelle floating text");
+        GameObject Text = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
+        Text.GetComponent<TextMesh>().text = "-" + damageTaken;
+        Text.transform.LookAt(shooter);
+        Text.transform.Rotate(Vector3.up, 180);
+    }
 
     public void TakeDammage(float damage)
     {
@@ -45,8 +55,12 @@ public class TargetHuman : MonoBehaviour
         photonView.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Transform shooter)
     {
+        if (FloatingTextPrefab != null)
+        {
+            ShowFloatingText(shooter, damage);
+        }
         photonView.RPC("RPC_SyncDamage", RpcTarget.AllBuffered, damage);
         if (health == 0) { Die(); }
         PV.text = health + " / 50";

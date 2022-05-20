@@ -91,7 +91,7 @@ public class PlayerMovementNew : MonoBehaviourPunCallbacks
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            this.transform.GetComponent<TargetHuman>().TakeDamage(10);
+            this.transform.GetComponent<TargetHuman>().TakeDamage(10, transform);
         }
 
     }
