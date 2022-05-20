@@ -5,6 +5,8 @@ using Photon.Pun;
 
 public class Gun : MonoBehaviour
 {
+    public Transform shooter;
+
     public float damage = 10f;
     public float range = 100f;
 
@@ -83,7 +85,7 @@ public class Gun : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
 
-            hit.collider.gameObject.GetComponent<Target>()?.TakeDamage(damage);
+            hit.collider.gameObject.GetComponent<Target>()?.TakeDamage(damage, shooter);
             hit.collider.gameObject.GetComponent<TargetHuman>()?.TakeDamage(damage);
 
 

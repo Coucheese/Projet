@@ -1,9 +1,11 @@
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using System;
 
 public class Target : MonoBehaviour
 {
+    public GameObject FloatingTextPrefab;
 
     public PhotonView phothonView;
     public TextMeshPro PV;
@@ -20,11 +22,24 @@ public class Target : MonoBehaviour
         {
             Die();
         }
+        /*if (FloatingTextPrefab != null)
+        {
+            ShowFloatingText();
+        }*/
+        
 
        //phothonView.RPC("TakeDamage", RpcTarget.All, health);
     }
 
-    
+ 
+    void ShowFloatingText(Transform shooter, float damageTaken)
+    {
+        Debug.Log("Je viens de instantier un gars qui s'apelle floating text");
+        GameObject Text = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
+        Text.GetComponent<TextMesh>().text = "-" + damageTaken;
+        Text.transform.LookAt(shooter);
+        Text.transform.Rotate(Vector3.up,180);
+    }
 
     void Die()
     {
@@ -32,8 +47,12 @@ public class Target : MonoBehaviour
         PhotonNetwork.Destroy(gameObject);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Transform shooter)
     {
+        if (FloatingTextPrefab != null)
+        {
+            ShowFloatingText(shooter, damage);
+        }
         phothonView.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);
         PV.text = health + " / 50";
     }
@@ -48,8 +67,6 @@ public class Target : MonoBehaviour
         }
 
         
-
-
         health -= damage;
         if (health <= 0f)
         {
