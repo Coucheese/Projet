@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloatingText : MonoBehaviour
 {
-    public float DestroyTime = 0.4f;
+    public float DestroyTime = 0.3f;
 
     // Si c'est un headshot qui est lâché on devrait en faire un + gros, couleur différente + animations != en mode tremblements
     public Vector3 Offset = new Vector3(0, 0.6f, 0);

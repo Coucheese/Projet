@@ -16,21 +16,6 @@ public class TargetHuman : MonoBehaviour
     public PhotonView photonView;
 
 
-    /*public void TakeHumanDammage(float amount)
-    {
-        if(health > 0)
-        { 
-            health -= amount;
-            Debug.Log(this.name + "  : " + health + " / 50");
-            PV.text = health + " / 50";
-
-        }else{
-            
-            Die();
-        }
-
-    }*/
-
     void ShowFloatingText(Transform shooter, float damageTaken)
     {
         Debug.Log("Je viens de instantier un gars qui s'apelle floating text");
@@ -42,17 +27,14 @@ public class TargetHuman : MonoBehaviour
 
     public void TakeDammage(float damage)
     {
-        if(health > 0)
+        health -= damage;
+        if (health <= 0f)
         {
-            health -= damage;
-            Debug.Log(this.name + "  : " + health + " / 50");
-            PV.text = health + " / 50";
+            Die();
         }
-
-        if(health ==0){ Die(); }
+        PV.text = health + " / 50";
 
         Debug.Log("Took Damage: " + damage);
-        photonView.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);
     }
 
     public void TakeDamage(float damage, Transform shooter)
@@ -61,7 +43,7 @@ public class TargetHuman : MonoBehaviour
         {
             ShowFloatingText(shooter, damage);
         }
-        photonView.RPC("RPC_SyncDamage", RpcTarget.AllBuffered, damage);
+        photonView.RPC("RPC_SyncDamage", RpcTarget.All, damage);
         if (health == 0) { Die(); }
         PV.text = health + " / 50";
     }
@@ -71,6 +53,7 @@ public class TargetHuman : MonoBehaviour
     {
         if (!photonView.IsMine)
         {
+            //TakeDammage(damage);
             return;
         }
 
@@ -79,6 +62,7 @@ public class TargetHuman : MonoBehaviour
         {
             Die();
         }
+        PV.text = health + " / 50";
         Debug.Log("La vie d'oim jcrois ca marche tema : " + damage);
     }
 

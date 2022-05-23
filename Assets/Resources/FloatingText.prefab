@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DestroyTime: 3
   Offset: {x: 0, y: 0.6, z: 0}
+  RandomizeIntensity: {x: 0.5, y: 0, z: 0}
 --- !u!95 &1239357618708945846
 Animator:
   serializedVersion: 4

@@ -5438,6 +5438,10 @@ PrefabInstance:
       propertyPath: m_ScaleModel.SynchronizeEnabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4772355092322406770, guid: b6e305d26f7052148accec2ae6257000, type: 3}
+      propertyPath: m_PositionModel.TeleportIfDistanceGreaterThan
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9123648592102115348, guid: b6e305d26f7052148accec2ae6257000, type: 3}
       propertyPath: Speed
       value: 9
@@ -5448,7 +5452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9123648592102115351, guid: b6e305d26f7052148accec2ae6257000, type: 3}
       propertyPath: m_Name
-      value: Bean (1)
+      value: Bean
       objectReference: {fileID: 0}
     - target: {fileID: 9123648592102115353, guid: b6e305d26f7052148accec2ae6257000, type: 3}
       propertyPath: m_RootOrder
@@ -5606,6 +5610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deff1ba48ae4e7a49820067555312866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FloatingTextPrefab: {fileID: 1824450637867497944, guid: 28a2618dc35a0de4690f2af732da257f, type: 3}
   health: 50
   PV: {fileID: 1549454926860313099}
   photonView: {fileID: 4968333575653685946}

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
@@ -27,14 +24,19 @@ public class PlayerMovementNew : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        string id = "Player n°" + PhotonNetwork.LocalPlayer.ActorNumber + PhotonNetwork.LocalPlayer.UserId;
-        this.name = id;
+        //string id = "Player n°" + PhotonNetwork.LocalPlayer.ActorNumber + PhotonNetwork.LocalPlayer.UserId;
+        //this.name = id;
+
+
+        this.name = "Player n°" + Random.Range(1, 99);
 
         InitialSpeed = Speed;
         
         if (!photonView.IsMine && GetComponent<PlayerMovementNew>() != null)
         {
             Destroy(GetComponent<PlayerMovementNew>());
+            Destroy(GetComponentInChildren<Canvas>());
+            //Destroy(transform.Find("Canvas"));
         }
 
         Cursor.visible = false;
